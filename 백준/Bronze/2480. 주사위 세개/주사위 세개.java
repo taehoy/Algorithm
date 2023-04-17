@@ -1,24 +1,24 @@
 import java.util.Scanner;
 
 public class Main{
-    public static void main(String args[]){
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
-        int A = sc.nextInt();
-        int B = sc.nextInt();
-        int C = sc.nextInt();
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
         
-        int Max = Math.max(Math.max(A,B) , C);
+        int max = Math.max(Math.max(a,b), c);
         
-        if(A==B && B==C){
-            System.out.println(10000+A*1000);
-        } else if(A==B && B!=C){
-            System.out.println(1000+A*100);
-        } else if(A==C && B!=C){
-            System.out.println(1000+A*100);
-        } else if(B==C && A!=C){
-            System.out.println(1000+B*100);
-        } else 
-            System.out.println(Max * 100);
+        if(a==b && b==c) {
+            System.out.println(10000 + a* 1000);
+        } else if(a==b && b!=c) {
+            System.out.println(1000 + a*100);
+        } else if(a==c && b!=c) {
+            System.out.println(1000 + a*100);
+        } else if(b==c && b!=a) {
+            System.out.println(1000 + b*100);
+        } else
+            System.out.println(100 * max);
     }
 }
