@@ -1,26 +1,29 @@
 import java.util.Scanner;
- 
-public class Main {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int[] arr = { sc.nextInt(), sc.nextInt(), sc.nextInt(),
-				sc.nextInt(), sc.nextInt(), sc.nextInt(),
-				sc.nextInt(), sc.nextInt(), sc.nextInt() };
-		sc.close();
-		
-		int a = 0;
-		int max = 0;
-		int index = 0;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         
-		for(int value : arr) {
-			a++;
+        int[] arr = new int[9];
+        
+        for(int i=0; i<9; i++) {
+            arr[i] = sc.nextInt();
+        }
+       
+        int max = 0;
+        int count = 0;
+        int index = 0;
+        
+        for(int value : arr) {
+            count++;
             
-			if(value > max) {
-				max = value;
-				index = a;
-			}
-		}
-		System.out.print(max + "\n" + index);
-		
-	}
+            if(value > max) {
+                max = value;
+                index = count;
+            }
+        }
+        
+        System.out.println(max);
+        System.out.println(index);
+    }
 }
