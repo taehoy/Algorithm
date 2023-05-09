@@ -5,23 +5,24 @@ public class Main{
         Scanner sc = new Scanner(System.in);
         
         int X = sc.nextInt();
-        
         int N = sc.nextInt();
         
+        int result = 0;
         int a = 0;
         int b = 0;
-        int sum = 0;
         
-        for(int i=0; i<N; i++){
+        for(int i=0; i<N; i++) {
             a = sc.nextInt();
             b = sc.nextInt();
             
-            sum += a * b;
+            result = result + (a * b);
         }
         
-        if(X == sum) {
+        if (result == X) {
             System.out.println("Yes");
-        } else
+        } else {
             System.out.println("No");
+        }
+        
     }
 }
