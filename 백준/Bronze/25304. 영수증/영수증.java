@@ -1,28 +1,25 @@
 import java.util.Scanner;
 
-public class Main{
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        
-        int X = sc.nextInt();
-        int N = sc.nextInt();
-        
-        int result = 0;
-        int a = 0;
-        int b = 0;
-        
-        for(int i=0; i<N; i++) {
-            a = sc.nextInt();
-            b = sc.nextInt();
-            
-            result = result + (a * b);
-        }
-        
-        if (result == X) {
-            System.out.println("Yes");
-        } else {
-            System.out.println("No");
-        }
-        
-    }
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		int X = scan.nextInt();
+		int N = scan.nextInt();
+		int a, b =0;
+		int total = 0;
+		for(int i=0; i<N; i++) {
+			a = scan.nextInt();
+			b = scan.nextInt();
+			total += (a * b);
+		}
+		
+		if(total == X) 
+			System.out.println("Yes");
+		else
+			System.out.println("No");
+		scan.close(); 	
+	}
+
 }
