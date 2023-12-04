@@ -3,14 +3,14 @@ class Solution {
         int answer = 0;
         if(n % 2 == 0) {
             // 짝수
-            for(int i=0; i<=n/2; i++) {
-                answer += Math.pow(i*2, 2);
+            for(int i=2; i<=n; i+=2) {
+                answer += Math.pow(i, 2);
             }
             return answer;
         } else // 홀수
         {
-            for(int i=0; i<=n/2; i++){
-                answer += 2*i + 1;
+            for(int i=1; i<=n; i+=2){
+                answer += i;
             }
             return answer;
         }
