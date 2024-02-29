@@ -1,9 +1,9 @@
 class Solution {
     public int solution(int n) {
-        int answer = 1;
-        while(n % answer != 1)
-            answer++;
-        
-        return answer;
+        int x = 1;
+        while(n % x != 1){
+            x++;
+        }
+        return x;
     }
 }
