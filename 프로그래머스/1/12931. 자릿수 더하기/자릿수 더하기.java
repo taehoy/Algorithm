@@ -1,11 +1,11 @@
 public class Solution {
     public int solution(int n) {
-        // 각 자리수 구하기
+        // 각 자리수 나누기 - n % 10이용
         int sum = 0;
-        String str = String.valueOf(n);
-        String[] arr = str.split("");
-        for(int i=0; i<arr.length; i++){
-            sum += Integer.parseInt(arr[i]); // 합하기
+        while(true){
+            sum += n % 10;
+            if(n < 10) break;
+            n = n / 10;
         }
         
         return sum;
