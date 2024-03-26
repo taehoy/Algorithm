@@ -1,9 +1,9 @@
 class Solution {
     public String solution(int num) {
-        if(num % 2 == 0){
-            return "Even";
-        } else {
-            return "Odd";
-        }
+        return evenOrOdd(num);
+    }
+    
+    public String evenOrOdd(int num){
+        return (num % 2 ==0) ? "Even" : "Odd";
     }
 }
