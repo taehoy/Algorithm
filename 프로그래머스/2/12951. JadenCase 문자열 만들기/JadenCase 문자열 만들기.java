@@ -1,28 +1,16 @@
 class Solution {
     public String solution(String s) {
         String answer = "";
-        // 2." "로 나누어준다.
-        String[] strArr = s.split(" ");
-    
-        for(int i =0; i<strArr.length; i++){
-            if(strArr[i].length() == 0) {
-                answer += " ";
-            } else {
-                // 3 공백 포함 x -> 3.1첫 문자 대문자 변환 후 추가
-                answer += strArr[i].substring(0,1).toUpperCase();
-                // 3 공백 포함 x -> 3.2 나머지 소문자 추가
-                answer += strArr[i].substring(1,strArr[i].length()).toLowerCase();
-                // 3 공백 포함 x -> 3.3 공백 추가
-                answer += " ";
-            }
+        // 전체를 소문자화하여 공백일 경우 대문자로 변환한다.
+        // 2. 배열만들기
+        String[] arr = s.toLowerCase().split("");
+        // 3. boolean값 flag을 이용하여 대문자화하기
+        boolean flag = true;
+     
+        for(String ss : arr){
+            answer += flag ? ss.toUpperCase() : ss;  // 3.1 flag이 true면 대문자, 아니면 그대로 넣기
+            flag = ss.equals(" ") ? true : false; // 3.2 공백이면 다음 값 대문자하기
         }
-        
-        if(s.substring(s.length()-1, s.length()).equals(" ")){
-            return answer;
-        }
-        // 4 마지막 공백 제거
-        answer.substring(0,answer.length()-1);
-        
-        return answer.substring(0,answer.length()-1);
+        return answer;
     }
 }
