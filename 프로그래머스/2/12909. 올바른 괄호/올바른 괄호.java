@@ -1,21 +1,25 @@
 class Solution {
     boolean solution(String s) {
+        String[] arr = s.split("");
+        
         int openCount = 0;
         int closeCount = 0;
         
-        for(int i=0; i<s.length(); i++){
-            if(s.charAt(i) == '('){
+        for(String ss : arr){
+            if(ss.contains("(")){
                 openCount++;
-            } else if (s.charAt(i) == ')') {
+            } else {
                 closeCount++;
             }
             if(openCount < closeCount){
                 return false;
             }
         }
+        
         if(openCount == closeCount){
             return true;
         }
+
         return false;
     }
 }
