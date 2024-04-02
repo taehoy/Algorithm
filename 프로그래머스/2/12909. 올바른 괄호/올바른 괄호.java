@@ -1,25 +1,19 @@
+import java.util.*;
+
 class Solution {
     boolean solution(String s) {
-        String[] arr = s.split("");
+        Stack<Character> stack = new Stack<>();
         
-        int openCount = 0;
-        int closeCount = 0;
-        
-        for(String ss : arr){
-            if(ss.contains("(")){
-                openCount++;
+        for(int i=0; i<s.length(); i++){
+            if(s.charAt(i) == '('){
+                stack.push('(');
             } else {
-                closeCount++;
+                if(stack.isEmpty()){
+                    return false;
+                }
+                stack.pop();
             }
-            if(openCount < closeCount){
-                return false;
-            }
-        }
-        
-        if(openCount == closeCount){
-            return true;
-        }
-
-        return false;
+        }        
+        return stack.isEmpty();
     }
 }
