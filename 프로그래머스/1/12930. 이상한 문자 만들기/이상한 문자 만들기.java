@@ -5,8 +5,13 @@ class Solution {
         int cnt = 0;
         
         for(String ss : arr){
-            cnt = ss.contains(" ") ? 0 : cnt+1;
-            answer += cnt % 2 ==0 ? ss.toLowerCase() : ss.toUpperCase();
+            if(ss.equals(" ")) {
+                answer += " ";
+                cnt = 0;
+                continue;
+            }
+            answer += (cnt%2 == 0) ? ss.toUpperCase() : ss.toLowerCase();
+            cnt++;
         }
         
         return answer;
