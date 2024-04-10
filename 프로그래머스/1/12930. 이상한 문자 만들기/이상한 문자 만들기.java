@@ -1,17 +1,13 @@
 class Solution {
     public String solution(String s) {
         String answer = "";
-        String[] arr = s.split("");
-        int cnt = 0;
+        String[] strArr = s.toLowerCase().split("");
+        int cnt =0;
         
-        for(String ss : arr){
-            if(ss.equals(" ")) {
-                answer += " ";
-                cnt = 0;
-                continue;
-            }
-            answer += (cnt%2 == 0) ? ss.toUpperCase() : ss.toLowerCase();
-            cnt++;
+        // strArr의 값을 answer에 추가한다.
+        for(String ss : strArr){
+            cnt = ss.contains(" ") ? 0 : cnt+1;
+            answer += cnt % 2 == 0 ? ss : ss.toUpperCase();
         }
         
         return answer;
