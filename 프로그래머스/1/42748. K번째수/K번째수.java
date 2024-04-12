@@ -3,18 +3,26 @@ import java.util.*;
 class Solution {
     public int[] solution(int[] array, int[][] commands) {
         int[] answer = new int[commands.length];
-        for(int i=0; i<answer.length; i++){
-            int firstNum = commands[i][0]; // 첫번쨰 자르는 수 
-            int lastNum = commands[i][1]; // j번쩨 자르는 수 
-            int[] temp = new int[lastNum - firstNum +1]; // 자른 배열 넣기
-
-            for(int j=0; j<temp.length; j++){
-                temp[j] = array[firstNum-1+j];
+        
+        // 임시 배열에 자른것 만큼 넣는다. loop 이용
+        for(int i=0; i<commands.length; i++){
+            int start = commands[i][0];
+            int end = commands[i][1];
+            // 임시 배열에 넣기
+            int[] temp = new int[end-start+1];
+            for(int j = start-1 ; j<end; j++){
+                temp[j-start+1] = array[j];
             }
+            // 임시 배열 정렬
+            Arrays.sort(temp);
             
-            Arrays.sort(temp); // 자른 배열 정렬하기
-            
-            answer[i] = temp[commands[i][2]-1]; // k번째 배열 찾기
+            for(int num : temp){
+                System.out.print(num);
+            }
+            System.out.println();
+            // temp 배열의 특정 인덱스 값 -> answer
+            // answer[i] = temp[commands[i][2]];
+            answer[i] = temp[commands[i][2]-1];
         }
         return answer;
     }
