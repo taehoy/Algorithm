@@ -3,21 +3,21 @@ import java.util.*;
 class Solution {
     public String solution(String[] participant, String[] completion) {
         String answer = "";
+        Map<String, Integer> map = new HashMap<>(); // 맵 선언
         
-        HashMap<String, Integer> map = new HashMap<>();
-        
-        for(String player : participant){
-            map.put(player, map.getOrDefault(player, 0) +1);
+        // 맵에 참가자 넣기
+        for(String s : participant){
+            map.put(s, map.getOrDefault(s , 0) + 1);
         }
         
-        // 완주자가 있으면 player key의 값 -1
-        for(String player : completion){
-            map.put(player, map.get(player)-1);
+        // 완주자가 있으면 -1
+        for(String s : completion){
+            map.put(s, map.get(s) - 1);
         }
         
-        // key의 값이 1인 그사람이 바로 미완주자
-        for(String player : map.keySet()){
-            if(map.get(player) == 1) answer = player;
+        // map의 key 중 1인 것 고르기
+        for(String s : map.keySet()){
+            if(map.get(s) ==1) answer = s;
         }
         
         return answer;
