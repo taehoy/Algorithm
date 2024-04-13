@@ -2,12 +2,15 @@ import java.util.*;
 
 class Solution {
     public long solution(long n) {
-         String[] arr = String.valueOf(n).split("");
-        Arrays.sort(arr);
-
+        String[] str = String.valueOf(n).split("");
+        
+        Arrays.sort(str);
+        
         StringBuilder sb = new StringBuilder();
-        for(String s : arr) sb.append(s);
-
+        for(String s : str){
+            sb.append(s);
+        }
+        
         return Long.parseLong(sb.reverse().toString());
     }
 }
