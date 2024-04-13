@@ -8,6 +8,7 @@ public class Solution {
             answer += n % 10;
             n = n / 10;
         }
+        
         answer += n;
         return answer;
     }
