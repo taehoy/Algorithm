@@ -1,5 +1,6 @@
 class Solution {
     public String solution(int num) {
+        
         return evenOrOdd(num);
     }
     
