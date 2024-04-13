@@ -3,6 +3,7 @@ class Solution {
         String strN = String.valueOf(n);
         int[] answer = new int[strN.length()];
         String[] strings = strN.split("");
+        
         for(int i=0; i<strings.length/2; i++){
             String temp = strings[i];
             strings[i] = strings[strings.length-1 - i];
