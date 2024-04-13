@@ -3,6 +3,7 @@ class Solution {
         String lowerS = s.toLowerCase();
         int pNum = 0;
         int yNum = 0;
+        
 
         if(s.contains("p") || s.contains("y")){
             String[] strings = lowerS.split("");
