@@ -1,6 +1,7 @@
 class Solution {
     public int solution(long num) {
         int count = 0;
+        
         if(num ==1){
             count = 0;
         }
