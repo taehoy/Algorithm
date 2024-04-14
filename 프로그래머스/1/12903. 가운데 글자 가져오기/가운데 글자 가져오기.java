@@ -1,6 +1,7 @@
 class Solution {
     public String solution(String s) {
         String answer = "";
+        
         int size = s.length();
         char[] ch = s.toCharArray();
         //1. 홀수 or 짝수
