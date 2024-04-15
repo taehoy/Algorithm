@@ -1,13 +1,13 @@
 class Solution {
     public int solution(int[][] sizes) {
-        int max_v = 0; // 가로길이
-        int max_h = 0; // 세로길이
+        int v_max = 0;
+        int h_max = 0;
         
         for(int[] card : sizes){
-            max_v = Math.max(max_v, Math.max(card[0],card[1]));
-            max_h = Math.max(max_h, Math.min(card[0],card[1]));
+            v_max = Math.max(v_max, Math.max(card[0], card[1]));
+            h_max = Math.max(h_max, Math.min(card[0], card[1]));
         }
         
-        return max_v * max_h;
+        return v_max * h_max;
     }
 }
