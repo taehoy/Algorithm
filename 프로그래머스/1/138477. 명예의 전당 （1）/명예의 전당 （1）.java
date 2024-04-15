@@ -3,16 +3,17 @@ import java.util.*;
 class Solution {
     public int[] solution(int k, int[] score) {
         int[] answer = new int[score.length];
-        List<Integer> list= new ArrayList<>();
+        
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
         
         for(int i=0; i<score.length; i++){
-            list.add(score[i]);
+            queue.add(score[i]);
             
-            if(list.size() > k){
-                list.remove(Collections.min(list));
+            if(queue.size()>k){
+                queue.poll();
             }
             
-            answer[i] = Collections.min(list);
+            answer[i] = queue.peek();
         }
         
         return answer;
