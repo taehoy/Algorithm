@@ -6,11 +6,8 @@ class Solution {
         
         Arrays.sort(score);
         
-        int index = score.length - m;
-        
-        while(index >= 0){
+        for(int index = score.length-m; index>=0; index-=m){
             answer += score[index] * m;
-            index -= m;
         }
         
         return answer;
