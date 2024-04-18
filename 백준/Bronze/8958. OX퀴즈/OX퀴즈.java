@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // 테스트케이스 값을 입력받는다.
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         int T = Integer.parseInt(br.readLine());
 
         // 테스트 케이스 순회
@@ -26,9 +27,9 @@ public class Main {
                 }
             }
             // num 출력
-            System.out.println(sum);
+            sb.append(sum);
+            sb.append("\n");
         }
-
-
+        System.out.println(sb);
     }
 }
