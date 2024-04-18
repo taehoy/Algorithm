@@ -1,18 +1,19 @@
-import java.util.Scanner;
- 
-public class Main {
-	public static void main(String[] args) {		
-		Scanner sn = new Scanner(System.in);
- 
-		int N = sn.nextInt();
-		String a = sn.next();
-		sn.close();
-		
-		int sum = 0;
-        
-		for(int i = 0; i < N; i++) {
-			sum += a.charAt(i)-'0';
-		}
-		System.out.print(sum);
-	}
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        // 결과
+        int result = 0;
+        int size = sc.nextInt();
+        String s = sc.next();
+        String[] sArr = s.split("");
+
+        for(int i=0; i<sArr.length; i++){
+            result += Integer.parseInt(sArr[i]);
+        }
+
+        System.out.println(result);
+    }
 }
