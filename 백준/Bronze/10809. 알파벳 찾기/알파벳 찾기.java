@@ -1,29 +1,29 @@
-import java.util.Scanner;
- 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Main {
- 
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
- 
- 
-		int[] arr = new int[26];
-		
-		for(int i = 0; i < arr.length; i++) {
-			arr[i] = -1;
-		}
- 
-		String S = in.nextLine();
- 
-		for(int i = 0; i < S.length(); i++) {
-			char ch = S.charAt(i);
-    
-			if(arr[ch - 'a'] == -1) {	// arr 원소 값이 -1 인 경우에만 초기화
-				arr[ch - 'a'] = i;
-			}
-		}
- 
-		for(int val : arr) {	// 배열 출력
-			System.out.print(val + " ");
-		}
-	}
+    public static void main(String[] args) throws IOException {
+        // 문자열 받기
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String str = br.readLine();
+
+        // -1 배열 만들기 : 길이 26
+        int[] arr = new int[26];
+        for(int i=0; i<arr.length; i++){
+            arr[i] = -1;
+        }
+
+        // 받은 문자열의 0번째부터 순회
+        for(int i=0; i<str.length(); i++){
+            int num = str.charAt(i) -'a'; // s[0] - 'a' = -1의 인덱스
+            if(arr[num] != -1) continue;
+            arr[num] = i; // 문자열인덱스 = 값
+        }
+
+        // -1배열 출력
+        for(int i : arr){
+            System.out.print(i + " ");
+        }
+    }
 }
