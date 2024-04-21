@@ -3,6 +3,7 @@ import java.util.*;
 class Solution {
     public String solution(String s) {
         String[] strArr = s.split(" ");
+        
         int[] intArr = new int[strArr.length];
         
         for(int i=0; i<strArr.length; i++){
