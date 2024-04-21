@@ -1,6 +1,7 @@
 class Solution {
     public String solution(String s) {
         char[] ch = s.toCharArray();
+        
         for(int j =0; j<ch.length-1; j++) {
             for(int i =0; i< ch.length -1; i++){
                 if(ch[i] < ch[i+1]) {
