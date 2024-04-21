@@ -4,6 +4,7 @@ class Solution {
         
         int size = s.length();
         char[] ch = s.toCharArray();
+        
         //1. 홀수 or 짝수
         if(size % 2 == 0) {
             answer += ch[size/2-1];
