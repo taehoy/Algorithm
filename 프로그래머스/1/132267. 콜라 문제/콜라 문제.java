@@ -1,18 +1,25 @@
 class Solution {
-    public int solution(int a, int b, int n) {
-        // 받는 콜라 병수 int 변수
-        int answer = 0;
+    static int a;
+    static int b;
+    static int n;
+    
+    public int recursion(int n, int answer){
+        // 탈출 조건
+        if(n < a) return answer;
+            
+        // 동작 구현
+        // 받는 병수 (n / a) * b
+        answer += (n / a) * b;
+        n = (n/a * b) + (n % a); 
         
-        // 가지고 있는 병수(n)이 줘야하는 병수(a) 보다 작으면 끝. a>n
-        while(a <= n){
-            // 받는 병수 (n / a) * b
-            int getedCoke = (n / a) * b;
-            
-            n = (n%a) + getedCoke;
-            
-            // 남은 병수(n) -> (n % a) + 받는 병수
-            answer += getedCoke;
-        }
-        return answer;
+        return recursion(n, answer);
+    }
+    
+    public int solution(int a, int b, int n) {
+        this.a = a;
+        this.b = b;
+        this.n = n;
+        
+        return recursion(n, 0);
     }
 }
