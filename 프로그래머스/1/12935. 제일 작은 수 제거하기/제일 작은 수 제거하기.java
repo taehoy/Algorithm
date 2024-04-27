@@ -22,6 +22,7 @@ class Solution {
             if(min == arr[i]){
                 continue;
             }
+            
             answer[index++] = arr[i];
         }
         
