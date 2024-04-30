@@ -2,25 +2,30 @@ class Solution {
     public String solution(String s, int n) {
         String answer = "";
         
+        // s의 길이만큼 순회한다.
         for(int i=0; i<s.length(); i++){
-            if(s.charAt(i) == ' ') answer += " ";
+            char ch = s.charAt(i);
             
-            else if('a' <= s.charAt(i) && s.charAt(i) <= 'z'){
-                if(s.charAt(i) + n > 'z'){
-                    answer += (char)(s.charAt(i)+n - 26);
+            // 공백이면 공백 추가
+            if(ch == ' ') {
+                answer += ch;
+                continue;
+            }
+            
+            if('a' <= ch && ch <= 'z'){
+                if(ch + n > 'z'){
+                    answer += (char)(ch + n - 26);
                 } else {
-                    answer += (char)(s.charAt(i) + n);    
+                    answer += (char)(ch + n);
                 }
-            } else if(('A' <= s.charAt(i) && s.charAt(i) <= 'Z')){
-                if(s.charAt(i) + n > 'Z'){
-                    answer += (char)(s.charAt(i)+n - 26);
+            } else if('A' <= ch && ch <= 'Z'){
+                if(ch + n > 'Z'){
+                    answer += (char)(ch + n - 26);
                 } else {
-                    answer += (char)(s.charAt(i) + n);    
+                    answer += (char)(ch + n);
                 }
-                
             }
         }
-        
         return answer;
     }
 }
