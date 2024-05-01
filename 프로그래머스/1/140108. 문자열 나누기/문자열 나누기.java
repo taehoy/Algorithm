@@ -1,8 +1,8 @@
 class Solution {
     public int solution(String s) {
         int answer = 0;
-        char ch = s.charAt(0);
         
+        char ch = s.charAt(0);
         int count = 0;
         
         for(char c : s.toCharArray()){
@@ -14,7 +14,7 @@ class Solution {
             } else {
                 count--;
             }
-            if(count == 0){
+            if(count ==0){
                 answer++;
             }
         }
@@ -22,7 +22,7 @@ class Solution {
         if(count >0){
             answer++;
         }
-
+        
         return answer;
     }
 }
