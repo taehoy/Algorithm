@@ -2,33 +2,35 @@ import java.util.*;
 
 class Solution {
     public int solution(int n, int[] lost, int[] reserve) {
-        int answer = 0;
         
-        // 도난 set, 여분 set 생성
-        Set<Integer> lostSet = new HashSet<>();
-        Set<Integer> reserveSet = new HashSet<>();
+        int answer = n-lost.length;
         
-        // 여분 set 데이터 추가
-        for(int i : reserve){
-            reserveSet.add(i);
-        }
+        Arrays.sort(lost);
+        Arrays.sort(reserve);
         
-        for(int i : lost){
-            if(reserveSet.contains(i)){
-                reserveSet.remove(i);
-            } else {
-                lostSet.add(i);
+        // 여분 있는 사람이 도난 당한 경우
+        for(int i=0; i<lost.length; i++){
+            for(int j=0; j<reserve.length; j++){
+                if(lost[i] == reserve[j]){
+                    answer++;
+                    lost[i] = -1;
+                    reserve[j] = -1;
+                    break;
+                }
             }
         }
         
-        for(Integer i : reserveSet){
-            if(lostSet.contains(i-1)){
-                lostSet.remove(i-1);
-            } else if (lostSet.contains(i+1)){
-                lostSet.remove(i+1);
+        // 도난 당한 사람의 앞뒤 번호 처리
+        for(int i=0; i<lost.length; i++){
+            for(int j=0; j<reserve.length; j++){
+                if(lost[i]-1 == reserve[j] || lost[i]+1 == reserve[j]){
+                    answer++;
+                    reserve[j] = -1;
+                    break;
+                }
             }
         }
         
-        return n - lostSet.size();
+        return answer;
     }
 }
