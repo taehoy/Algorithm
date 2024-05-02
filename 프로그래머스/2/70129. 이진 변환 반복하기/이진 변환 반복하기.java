@@ -3,18 +3,18 @@ class Solution {
         int[] answer = new int[2];
         
         
-        while(s.length() > 1){
-            int size = 0;
+        while(!s.equals("1")){
+            int oneCount = 0;
             
             for(int i=0; i<s.length(); i++){
-                if(s.charAt(i) == '0'){ // 0일때 
-                    answer[1]++;
-                } else { // 1일때
-                    size++;
+                if(s.charAt(i) == '1') {
+                    oneCount++;
                 }
             }
             
-            s = Integer.toBinaryString(size);
+            answer[1] += s.length() - oneCount;
+            
+            s = Integer.toBinaryString(oneCount);
             answer[0]++;
         }
         
