@@ -8,20 +8,20 @@ class Solution {
         for(char c : s.toCharArray()){
             if(count == 0){
                 ch = c;
-            }
+            } 
             if(ch == c){
                 count++;
             } else {
                 count--;
             }
-            if(count ==0){
+            if(count == 0){
                 answer++;
             }
         }
         
-        if(count >0){
+        if(count > 0) {
             answer++;
-        }
+        };
         
         return answer;
     }
