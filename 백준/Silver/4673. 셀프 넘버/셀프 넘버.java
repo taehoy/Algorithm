@@ -20,7 +20,7 @@ public class Main {
 
         for(int i=1; i<10001; i++){
             if(check[i] == false){
-                sb.append(i + "\n");
+                sb.append(i).append("\n");
             }
         }
 
