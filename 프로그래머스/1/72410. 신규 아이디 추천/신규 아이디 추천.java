@@ -1,18 +1,16 @@
 class Solution {
     public String solution(String new_id) {
-        String kakaoID = new KakaoID(new_id)
-                        .toLowerCase()
-                        .filter()
-                        .toSingleDot()
-                        .removeFirstOrEndDot()      
-                        .checkLength()
-                        .tolessThan16()
-                        .checkLength2()
-                        .getResult();
+        String s = new KakaoID(new_id)
+                .toLowerCase()
+                .filter()       
+                .toSingleDot()
+                .delFirstEndDot()
+                .noBlank()
+                .noLonger15()
+                .toLongerTwo()
+                .getResult();
         
-        System.out.println(kakaoID);
-        
-        return kakaoID;
+        return s;
     }
     
     private static class KakaoID{
@@ -27,22 +25,24 @@ class Solution {
             return this;
         }
         
+        
         private KakaoID filter(){
-            char[] arr = s.toCharArray();
             StringBuilder sb = new StringBuilder();
-            
-            for(char c : arr){
-                if(('a' <= c && c <= 'z') || ('0' <= c && c <='9') || c == '-' || c == '_' || c == '.'){
+            for(int i=0; i<s.length(); i++){
+                char c = s.charAt(i);
+                
+                if(('a' <= c && c <= 'z') || ('0' <= c && c <= '9') || c == '_' || c == '-' || c == '.'){
                     sb.append(c);
                 }
             }
-            this.s = sb.toString();
+            
+            s = sb.toString();
             
             return this;
-        }
+        }       
         
-        private KakaoID toSingleDot(){
-            // s = s.replace("..", ".");
+        
+        private KakaoID toSingleDot() {
             while(s.contains("..")){
                 s = s.replace("..", ".");
             }
@@ -50,50 +50,51 @@ class Solution {
             return this;
         }
         
-        private KakaoID removeFirstOrEndDot(){
+        private KakaoID delFirstEndDot(){
             if(s.length() > 0){
-                if(s.charAt(0) == '.') s = s.substring(1,s.length());
+                if(s.charAt(0) == '.') s= s.substring(1, s.length());
             }
             if(s.length() > 0){
-                if(s.charAt(s.length()-1) == '.') s = s.substring(0,s.length()-1);
+                if(s.charAt(s.length()-1) == '.') s = s.substring(0, s.length()-1);
             }
             
             return this;
         }
         
-        private KakaoID checkLength(){
-            s = s.equals("") ? "a" : s;
+        
+        private KakaoID noBlank(){
+            if(s.equals("")) s = "a";
+                
             return this;
         }
         
-        private KakaoID tolessThan16(){
-            if(s.length() >= 16){
+        
+        private KakaoID noLonger15(){
+            if(s.length() >= 16) {
                 s = s.substring(0,15);
             }
-            if(s.charAt(s.length()-1)== '.') s = s.substring(0,14);
+            if(s.charAt(s.length()-1) == '.'){
+                    s = s.substring(0,14);
+                }
             
             return this;
         }
         
-        private KakaoID checkLength2(){
+        private KakaoID toLongerTwo() {
             StringBuilder sb = new StringBuilder(s);
-            
             if(sb.length() <= 2){
                 while(sb.length() != 3){
                     sb.append(s.charAt(s.length()-1));
                 }
             }
+
             s = sb.toString();
-            
             return this;
         }
-        
         
         private String getResult(){
             return s;
         }
-        
-        
         
     }
 }
