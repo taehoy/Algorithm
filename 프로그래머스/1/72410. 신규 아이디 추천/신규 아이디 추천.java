@@ -42,7 +42,7 @@ class Solution {
         }
         
         private KakaoID toSingleDot(){
-            s = s.replace("..", ".");
+            // s = s.replace("..", ".");
             while(s.contains("..")){
                 s = s.replace("..", ".");
             }
