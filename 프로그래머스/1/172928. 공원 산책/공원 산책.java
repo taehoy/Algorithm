@@ -1,107 +1,100 @@
-import java.util.*;
-
 class Solution {
     public int[] solution(String[] park, String[] routes) {
         int[] answer = new int[2];
-        int x = -1;  //시작지점이자 최종 위치
-        int y = -1;  //시작지점이자 최종 위치
-        int height = park.length;   //공원 높이
-        int weight = park[0].length();    //공원 넓이
+        int x = -1; // 실제 좌표 x
+        int y = -1; // 실제 좌표 y
+        int height = park.length;
+        int weight = park[0].length();
         
-        //공원 순회
-        for(int i=0;i<park.length;i++){
+        // 시작 위치 지정
+        for(int i=0; i<park.length; i++){
             if(park[i].indexOf('S') != -1){
                 x = park[i].indexOf('S');
                 y = i;
-                break;
             }
         }
         
+        // 이동 시작
         
-        
-        // 강아지 명령 순회
-        for(int i=0;i<routes.length;i++){
-            String[] temp = routes[i].split(" ");
-            String vector = temp[0];        //방향
-            int distance =  Integer.parseInt(temp[1]);  //거리
+        for(int i=0; i<routes.length; i++){
+            String[] arr = routes[i].split(" ");
+            String vector = arr[0]; // 방향
+            int distance = Integer.parseInt(arr[1]); // 이동거리
             int currX = x;
             int currY = y;
-            
-            if(vector.equals("E")){ //동
+                
+            if(vector.equals("E")){
                 boolean flag = true;
-                for(int j=1;j<=distance;j++){
+
+                for(int j=0; j<distance; j++){
                     currX++;
-                    if(currX >= weight){	//범위를 벗어났나
+                
+                    if(currX >= weight){
                         flag = false;
                         break;
-                    }
-                    // 장애물이 있나
-                    else if(park[currY].charAt(currX) =='X'){
+                    } else if(park[currY].charAt(currX) == 'X'){
                         flag = false;
                         break;
-                    }
-                    
+                    }    
                 }
-                if (flag) {
+                
+                if(flag){
                     x = currX;
                 }
-            }
-            else if(vector.equals("W")){    //서
+            } else if(vector.equals("W")){
                 boolean flag = true;
-                for(int j=1;j<=distance;j++){
+
+                for(int j=0; j<distance; j++){
                     currX--;
-                    if(currX < 0){
+                
+                    if(currX <0){
                         flag = false;
                         break;
-                    }
-                    else if(park[currY].charAt(currX) =='X'){
+                    } else if(park[currY].charAt(currX) == 'X'){
                         flag = false;
                         break;
-                    }
-                    
+                    }    
                 }
-                if (flag) {
-                        x = currX;
+                
+                if(flag){
+                    x = currX;
                 }
-            }
-            else if(vector.equals("S")){    //남
+            } else if(vector.equals("S")){
                 boolean flag = true;
-                for(int j=1;j<=distance;j++){
+                for(int j=0; j<distance; j++){
                     currY++;
+                
                     if(currY >= height){
                         flag = false;
                         break;
-                    }
-                    else if(park[currY].charAt(currX) =='X'){
+                    } else if(park[currY].charAt(currX) == 'X'){
                         flag = false;
                         break;
-                    }
-                    
+                    }    
                 }
-                if (flag) {
-                        y = currY;
+                
+                if(flag){
+                    y = currY;
                 }
-            }
-            else if(vector.equals("N")){    //북
+            } else if(vector.equals("N")){
                 boolean flag = true;
-                for(int j=1;j<=distance;j++){
+                for(int j=0; j<distance; j++){
                     currY--;
+                
                     if(currY < 0){
                         flag = false;
                         break;
-                    }
-                    else if(park[currY].charAt(currX) =='X'){
+                    } else if(park[currY].charAt(currX) == 'X'){
                         flag = false;
                         break;
-                    }
-                    
+                    }    
                 }
-                if (flag) {
+                
+                if(flag){
                     y = currY;
                 }
-            }
-
-        }
+            } 
+        } // 이동 끝
         
         answer[0] = y;
         answer[1] = x;
