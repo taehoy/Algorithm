@@ -15,19 +15,15 @@ class Solution {
         for(String s : goal) que3.offer(s);
         
         // 목표 단어 생성 여부 처리
-        for(int i=0; i<goal.length; i++){
+        while(!que3.isEmpty()){
+            String s = que3.poll();    
             String s1 = que1.peek();
             String s2 = que2.peek();
-            String goalS = que3.peek();
-            
-            if((s1 != null) && s1.equals(goalS)) {
-                que3.poll();
-                que1.poll();
-            } else if((s2 != null) && s2.equals(goalS)){
-                que3.poll();
-                que2.poll();
-            } else return "No";
-        }     
+        
+            if(s.equals(s1)) que1.poll();
+            else if(s.equals(s2)) que2.poll();
+            else return "No";
+        }
         
         return "Yes";
     }
