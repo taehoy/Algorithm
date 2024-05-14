@@ -1,23 +1,23 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int N = Integer.parseInt(br.readLine());
 
-        StringBuilder sb = new StringBuilder();
+        br.close();
 
-        for(int i=0; i<N; i++){
-            for(int j=0; j<=i; j++){
-                sb.append('*');
+        for(int i=1; i<=N; i++){
+            for(int j=1; j<=i; j++){
+                bw.write('*');
             }
-            sb.append("\n");
+            bw.write('\n');
         }
 
-        System.out.println(sb);
+        bw.flush();
+        bw.close();
     }
 
 }
