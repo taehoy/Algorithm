@@ -3,6 +3,7 @@ class Solution {
         String answer = "";
         
         int count = 0;
+        
         for(int i=0; i< seoul.length; i++){
             if(seoul[i].equals("Kim")) {
                 count = i;
