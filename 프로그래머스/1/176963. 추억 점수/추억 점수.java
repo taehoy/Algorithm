@@ -3,8 +3,6 @@
 *   2.사진 속 이름별 점수 구하기
 *   2.1 사진 속 이름이 없는 경우 처리 - 0점 더하기
 *
-*
-*
 */
 import java.util.*;
 
@@ -19,18 +17,15 @@ class Solution {
             scoreMap.put(name[i], yearning[i]);
         }
         
+        int idx = 0;
         // 사진 속 이름별 점수 구하기
-        for(int i=0; i<photo.length; i++){
-            for(int j=0; j<photo[i].length; j++){
-                String nameInPhoto = photo[i][j];
+        for(String[] photos : photo){
+            int tempScore = 0;
+            for(String nameInPhoto : photos){
                 // 존재하지 않는 경우
-                if(!scoreMap.containsKey(nameInPhoto)){
-                    answer[i] +=0;
-                    continue;
-                }
-                // 존재할 경우
-                answer[i] += scoreMap.get(nameInPhoto);
+                tempScore += scoreMap.getOrDefault(nameInPhoto, 0);
             }
+            answer[idx++] = tempScore;
         }
         
         return answer;
