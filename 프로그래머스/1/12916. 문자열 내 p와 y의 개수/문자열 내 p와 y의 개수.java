@@ -1,21 +1,20 @@
 class Solution {
     boolean solution(String s) {
-        String lowerS = s.toLowerCase();
-        int pNum = 0;
-        int yNum = 0;
+        int pCnt = 0;
+        int yCnt = 0;
         
-
-        if(s.contains("p") || s.contains("y")){
-            String[] strings = lowerS.split("");
-            for (String string : strings) {
-                if(string.equals("p"))
-                    pNum++;
-                if(string.equals("y"))
-                    yNum++;
-            }
+        s = s.toLowerCase();
+        
+        for(int i=0; i<s.length(); i++){
+            char c = s.charAt(i);
+            
+            
+            if(c=='p') pCnt++;
+            else if(c=='y') yCnt++;
         }
-        if(pNum != yNum)
-            return false;
-        return true;
+       
+        if(pCnt == yCnt || (pCnt ==0 && yCnt==0)) return true;
+        
+        return false;
     }
 }
