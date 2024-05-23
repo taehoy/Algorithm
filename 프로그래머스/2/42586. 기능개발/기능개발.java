@@ -1,51 +1,46 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
-		int[] answer = {};
+        Queue<Integer> q = new LinkedList<>();
         
-		Queue<Integer> q = new LinkedList<>();
-		
-		int[] day = new int[progresses.length];
-		
-		for(int i = 0; i < day.length; i++) {
-			if((100 - progresses[i]) % speeds[i] == 0) {
-				day[i] = (100 - progresses[i]) / speeds[i];
-			}
-			else {
-				day[i] = ((100 - progresses[i]) / speeds[i]) + 1;
-			}
-			q.add(day[i]);
-		}
-		
-		List<Integer> list = new ArrayList<Integer>();
-		
-		int cnt = 0; 
-		int before = q.peek();
+        // 남은 작업일 수 계산
+        int[] days = new int[progresses.length];
         
-		while(!q.isEmpty()) {
-			if(q.peek() <= before) {
-                
-				q.poll();
-				cnt++;
-			}
-            
-			else {
-				list.add(cnt);
-				cnt = 1;
-				before = q.poll(); 
-			}
-		}
+        // 큐에 넣기
+        for(int i=0; i<progresses.length; i++){
+            if((100-progresses[i])%speeds[i] == 0){
+                days[i] = (100-progresses[i]) / speeds[i];
+            } else if(100-progresses[i] % speeds[i] != 0){
+                days[i] = (100-progresses[i]) / speeds[i] + 1;
+            }
+            q.add(days[i]); 
+        }
         
-		list.add(cnt);
-		
-		answer = new int[list.size()];
-		for(int i = 0; i < list.size(); i++) {
-			answer[i] = list.get(i);
-		}
+        // 배포 단위 나누기
+        int count = 0;
+        int before = q.peek();
+        List<Integer> list = new ArrayList<>();
+        
+        while(!q.isEmpty()){
+            if(before >= q.peek()){
+                q.poll();
+                count++;
+            } else {
+                list.add(count);
+                before = q.poll();
+                count = 1;
+            }
+        }
+        
+        list.add(count);
+        
+        // 배열 만들기
+        int[] answer = new int[list.size()];
+        
+        for(int i=0; i<answer.length; i++){
+            answer[i] = list.get(i);
+        }
         
         return answer;
     }
