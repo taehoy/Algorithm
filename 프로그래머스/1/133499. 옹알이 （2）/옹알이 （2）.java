@@ -7,16 +7,13 @@ class Solution {
                 continue;
             }
             
-            s = s.replace("aya"," ");
-            s = s.replace("ye"," ");
-            s = s.replace("woo"," ");
-            s = s.replace("ma"," ");
-            s = s.replace(" ","");
+            s = s.replace("aya", " ");
+            s = s.replace("ye", " ");
+            s = s.replace("woo", " ");
+            s = s.replace("ma", " ");
+            s = s.replace(" ", "");
             
-            if(s.length() == 0){
-                answer++;
-            }
-            
+            if(s.length() == 0) answer++;
         }
         
         return answer;
