@@ -6,21 +6,21 @@ class Solution {
         
         PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
         
-        for(int i : priorities){
-            pq.offer(i);
+        for(int n : priorities){
+            pq.offer(n);
         }
         
         while(!pq.isEmpty()){
             for(int i=0; i<priorities.length; i++){
-                if(pq.peek() == priorities[i]){
+                if(priorities[i] == pq.peek()){
                     pq.poll();
                     answer++;
                     
-                    if(location == i){
+                    if(i == location){
                         return answer;
                     }
                 }
-            }
+            }    
         }
         
         return answer;
