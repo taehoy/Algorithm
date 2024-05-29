@@ -2,19 +2,22 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] citations) {
-        int index = 0;
-        int size = citations.length; // 배열 길이
-        
         Arrays.sort(citations);
         
-        // 0회
-        if(citations[size-1] == 0) return 0;
+        int size = citations.length;
         
-        for(int i = size-1; i>=0; i--){
-            if(index >= citations[i]) break;
-            index++;
+        if(citations[size-1] == 0){
+            return 0;
         }
         
-        return index;
+        int count = 0; // 인용된 논문 수
+        
+        for(int i=size-1; i>=0; i--){
+            if(count >= citations[i]) break;
+            count++;
+             
+        }
+        
+        return count;
     }
 }
