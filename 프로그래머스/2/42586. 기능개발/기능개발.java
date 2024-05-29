@@ -4,38 +4,35 @@ class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
         Queue<Integer> q = new LinkedList<>();
         
-        // 남은 작업일 수 계산
-        int[] days = new int[progresses.length];
-        
-        // 큐에 넣기
+        // 남은 일수 구한다.
         for(int i=0; i<progresses.length; i++){
-            if((100-progresses[i])%speeds[i] == 0){
-                days[i] = (100-progresses[i]) / speeds[i];
-            } else if(100-progresses[i] % speeds[i] != 0){
-                days[i] = (100-progresses[i]) / speeds[i] + 1;
+            if((100 - progresses[i]) % speeds[i] == 0){
+                q.offer((100 - progresses[i]) / speeds[i]);
+            } else {
+                q.offer((100 - progresses[i]) / speeds[i] +1);
             }
-            q.add(days[i]); 
         }
         
-        // 배포 단위 나누기
-        int count = 0;
-        int before = q.peek();
+        int before = q.poll(); // 이전 일수 
+        int cnt = 1;
         List<Integer> list = new ArrayList<>();
         
+        // 남은 일수 비교
         while(!q.isEmpty()){
+            // 함께 배포
             if(before >= q.peek()){
                 q.poll();
-                count++;
-            } else {
-                list.add(count);
+                cnt++;
+            } else { // 따로 배포
+                list.add(cnt);
+                cnt = 1;
                 before = q.poll();
-                count = 1;
             }
         }
         
-        list.add(count);
+        // 마지막 배포
+        list.add(cnt);
         
-        // 배열 만들기
         int[] answer = new int[list.size()];
         
         for(int i=0; i<answer.length; i++){
