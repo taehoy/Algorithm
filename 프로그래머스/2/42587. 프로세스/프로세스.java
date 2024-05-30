@@ -6,9 +6,11 @@ class Solution {
         
         PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
         
-        for(int n : priorities){
-            pq.offer(n);
+        for(int i : priorities){
+            pq.offer(i);
         }
+        
+        System.out.println(pq);
         
         while(!pq.isEmpty()){
             for(int i=0; i<priorities.length; i++){
@@ -16,11 +18,9 @@ class Solution {
                     pq.poll();
                     answer++;
                     
-                    if(i == location){
-                        return answer;
-                    }
+                    if(location == i) return answer;
                 }
-            }    
+            }
         }
         
         return answer;
