@@ -1,15 +1,21 @@
 class Solution {
     public int[] solution(int brown, int yellow) {
-        for(int col=3; col<5000; col++){
+        int[] answer = new int[2];
+        
+        for(int col=3; col<=5000; col++){
             for(int row=3; row<=col; row++){
-                int boundary = (col + row -2) * 2;
-                int center = (col * row) - boundary;
+                int boundary = (col+row -2) *2;
+                int center = col*row - boundary;
                 
                 if(boundary == brown && center == yellow){
-                    return new int[]{col, row};
+                    answer[0] = col;
+                    answer[1] = row;
+                    
+                    return answer;
                 }
             }
         }
-        return null;
+        
+        return answer;
     }
 }
