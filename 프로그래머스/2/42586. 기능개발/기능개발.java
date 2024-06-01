@@ -8,9 +8,10 @@ class Solution {
         for(int i=0; i<progresses.length; i++){
             if((100 - progresses[i]) % speeds[i] == 0){
                 q.offer((100 - progresses[i]) / speeds[i]);
-            } else {
-                q.offer((100 - progresses[i]) / speeds[i] +1);
+                continue;
             }
+            q.offer((100 - progresses[i]) / speeds[i] +1);
+            
         }
         
         int before = q.poll(); // 이전 일수 
