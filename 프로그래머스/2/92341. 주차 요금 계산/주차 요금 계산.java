@@ -1,18 +1,15 @@
 import java.util.*;
 
 class Solution {
-    public static int getMinute(String time){
-        String[] timeArr = time.split(":");
-        int timeMinute =  Integer.parseInt(timeArr[0]);
-        int minute = Integer.parseInt(timeArr[1]);
-        
-        // 출차 - 입차
-        return timeMinute * 60 + minute;
+    private static int getMinute(String time){
+        String[] arr = time.split(":");
+        int timeToMinute = Integer.parseInt(arr[0]) * 60;
+        return timeToMinute + Integer.parseInt(arr[1]);
     }
     
+    
     public int[] solution(int[] fees, String[] records) {
-        
-        Map<String, Integer> inParkMap = new HashMap<>();
+        Map<String, Integer> inMap = new HashMap<>();
         Map<String, Integer> map = new HashMap<>();
         
         for(String record : records){
@@ -22,60 +19,53 @@ class Solution {
             String status = arr[2];
             
             if(status.equals("IN")){
-                inParkMap.put(carNum, time);
-                continue;
+                inMap.put(carNum, time);
             } else if(status.equals("OUT")){
-                int inParkTime = inParkMap.get(carNum);
-                inParkMap.remove(carNum);
+                int inTime = inMap.get(carNum);
+                inMap.remove(carNum);
                 
                 if(map.containsKey(carNum)){
-                    int carTime = map.get(carNum);
-                    map.replace(carNum, carTime + time - inParkTime);
+                    int t = map.get(carNum);
+                    map.replace(carNum, t + time - inTime);
                 } else {
-                    map.put(carNum, time-inParkTime);
+                    map.put(carNum, time - inTime);
                 }
             }
-            
-            
-            
         }
         
-        // 출차가 없는 경우
+        // 출차가 없는 경우 처리
         int lastTime = 1439;
-        for(String car : inParkMap.keySet()){
-            int inParkTime = inParkMap.get(car);
-
+        for(String car : inMap.keySet()){
+            int time = inMap.get(car);
             if(map.containsKey(car)){
-                int carTime = map.get(car);
-                map.replace(car, carTime + lastTime - inParkTime);
+                int t = map.get(car);
+                map.replace(car, lastTime + t - time);
             } else {
-                map.put(car, lastTime - inParkTime);
+                map.put(car, lastTime - time);
             }
         }
-
-        // 요금 계산 (차량번호 오름차순)
+        
+        // 요금 계산
         int baseTime = fees[0];
         int baseFee = fees[1];
         int partTime = fees[2];
         int partFee = fees[3];
-
-        Object[] sortKey = map.keySet().toArray();
-        Arrays.sort(sortKey);
-
-        int[] answer = new int[sortKey.length];
-
-        for(int i=0; i<sortKey.length; i++){
+        
+        Object[] keys = map.keySet().toArray();
+        Arrays.sort(keys);
+        
+        int[] answer = new int[keys.length];
+        
+        for(int i=0; i<answer.length; i++){
             int result = baseFee;
-
-            // 누적주차시간 > 기본 시간
-            int totalTime = map.get(sortKey[i]);
-            if(totalTime > baseTime){
-                result = (int)(baseFee + Math.ceil((double)(totalTime - baseTime) / partTime) * partFee);
+            
+            if(baseTime < map.get(keys[i])){
+                result = (int)(baseFee + Math.ceil((double)(map.get(keys[i]) - baseTime) / partTime) * partFee);
             }
-
+            
             answer[i] = result;
         }
-
+        
         return answer;
     }
 }
