@@ -3,45 +3,46 @@ import java.util.*;
 class Solution {
     private static int getMinute(String time){
         String[] arr = time.split(":");
-        int timeToMinute = Integer.parseInt(arr[0]) * 60;
-        return timeToMinute + Integer.parseInt(arr[1]);
+        int hourToMinute = Integer.parseInt(arr[0]) * 60;
+        int minute = Integer.parseInt(arr[1]);
+        
+        return hourToMinute + minute;
     }
-    
     
     public int[] solution(int[] fees, String[] records) {
         Map<String, Integer> inMap = new HashMap<>();
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> sumMap = new HashMap<>();
         
         for(String record : records){
             String[] arr = record.split(" ");
             int time = getMinute(arr[0]);
-            String carNum = arr[1];
+            String car = arr[1];
             String status = arr[2];
             
-            if(status.equals("IN")){
-                inMap.put(carNum, time);
-            } else if(status.equals("OUT")){
-                int inTime = inMap.get(carNum);
-                inMap.remove(carNum);
+            if(status.equals("IN")) inMap.put(car,time);
+            else if(status.equals("OUT")){
+                int inTime = inMap.get(car);
+                inMap.remove(car);
                 
-                if(map.containsKey(carNum)){
-                    int t = map.get(carNum);
-                    map.replace(carNum, t + time - inTime);
+                if(sumMap.containsKey(car)){
+                    int sumTime = sumMap.get(car);
+                    sumMap.replace(car, sumTime+time - inTime);
                 } else {
-                    map.put(carNum, time - inTime);
+                    sumMap.put(car, time - inTime);
                 }
             }
         }
         
-        // 출차가 없는 경우 처리
+        // 출차가 없는 경우
         int lastTime = 1439;
         for(String car : inMap.keySet()){
-            int time = inMap.get(car);
-            if(map.containsKey(car)){
-                int t = map.get(car);
-                map.replace(car, lastTime + t - time);
+            int inTime = inMap.get(car);
+            
+            if(sumMap.containsKey(car)){
+                int sumTime = sumMap.get(car);
+                sumMap.replace(car, sumTime + lastTime - inTime);
             } else {
-                map.put(car, lastTime - time);
+                sumMap.put(car, lastTime - inTime);
             }
         }
         
@@ -51,21 +52,20 @@ class Solution {
         int partTime = fees[2];
         int partFee = fees[3];
         
-        Object[] keys = map.keySet().toArray();
+        Object[] keys = sumMap.keySet().toArray();
         Arrays.sort(keys);
         
         int[] answer = new int[keys.length];
         
         for(int i=0; i<answer.length; i++){
             int result = baseFee;
+            int totalTime = sumMap.get(keys[i]);
             
-            if(baseTime < map.get(keys[i])){
-                result = (int)(baseFee + Math.ceil((double)(map.get(keys[i]) - baseTime) / partTime) * partFee);
-            }
+            if(totalTime > baseTime)
+                result = (int)(baseFee+Math.ceil((double)(totalTime - baseTime) / partTime) * partFee);
             
             answer[i] = result;
         }
-        
         return answer;
     }
 }
