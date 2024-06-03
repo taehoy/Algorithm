@@ -6,7 +6,7 @@ class Solution {
         
         // 바구니 만들기
         Stack<Integer> stack = new Stack<>();
-        
+    
         // 인형 잡기
         for(int i=0; i<moves.length; i++){
             int pick = 0; // 집은 인형 번호
@@ -24,16 +24,13 @@ class Solution {
             if(pick == 0) continue;
             
             // 바구니와 비교
-            if(stack.isEmpty()){
+            if(stack.isEmpty() || stack.peek() != pick){
                 stack.push(pick);
-            } else {
-                if(stack.peek() == pick){
-                    stack.pop();
-                    answer+=2;
-                    continue;
-                }
-                stack.push(pick);
+                continue;
             }
+            stack.pop();
+            answer+=2;
+            
         }
         
         return answer;
