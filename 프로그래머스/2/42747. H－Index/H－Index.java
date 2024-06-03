@@ -2,20 +2,23 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] citations) {
-        int index = 0;
-        int n = citations.length;
-
+        int answer = 0;
+        int cnt = 0; 
+        
         Arrays.sort(citations);
-         if(citations[n-1] == 0){
+        int n = citations.length;
+        
+        if(citations[n-1] == 0){
             return 0;
         }
         
-        
-        for(int i = n-1; i>=0; i--){
-            if(citations[i] <= index) break;
-            index++;
+        for(int i=n-1; i>=0; i--){
+            if(citations[i] <= cnt){
+                break;
+            }
+            cnt++;
         }
         
-        return index;
+        return cnt;
     }
 }
