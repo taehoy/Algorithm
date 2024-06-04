@@ -1,48 +1,48 @@
 import java.util.*;
 
 class Solution {
-    private static String[] seperateFilename(String file){
-        file = file.toLowerCase();
- 
+    private static String[] seperateFile(String file){
+        file = file.toUpperCase();
+        
         String head = file.split("[0-9]")[0];
         String number = file.substring(head.length());
-        String[] separateFile = {head, number};
-        return separateFile;
+        return new String[]{head, number};
     }
     
-    private static String validateNumber(String num){
+    private static String validateNumber(String number){
         StringBuilder sb = new StringBuilder();
-        for (char c : num.toCharArray()) {
-            // 숫자이고 길이가 5를 넘어가지 않는다면
-            if (Character.isDigit(c) && sb.length() <= 5) {
+        
+        for(char c : number.toCharArray()){
+            if(Character.isDigit(c) && sb.length()<=5){
                 sb.append(c);
             } else {
                 return sb.toString();
             }
         }
- 
+        
         return sb.toString();
     }
     
     public String[] solution(String[] files) {
-        Arrays.sort(files, new Comparator<String>() {
+        
+        Arrays.sort(files, new Comparator<String>(){
             @Override
-            public int compare(String o1, String o2) {
-                String[] file1 = seperateFilename(o1);
-                String[] file2 = seperateFilename(o2);
- 
-                int result = file1[0].compareTo(file2[0]);
- 
-                // head 값이 서로 같다면 number 값으로 비교
-                if (result == 0) {
-                    int number1 = Integer.parseInt(validateNumber(file1[1]));
-                    int number2 = Integer.parseInt(validateNumber(file2[1]));
-                    return number1 - number2;
+            public int compare(String o1, String o2){
+                String[] arr1 = seperateFile(o1);
+                String[] arr2 = seperateFile(o2);
+                
+                int result = arr1[0].compareTo(arr2[0]);
+                
+                if(result ==0){
+                    int num1 = Integer.parseInt(validateNumber(arr1[1]));
+                    int num2 = Integer.parseInt(validateNumber(arr2[1]));
+                    
+                    return num1-num2;
                 }
+                
                 return result;
             }
         });
- 
         
         return files;
     }
