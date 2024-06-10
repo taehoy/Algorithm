@@ -13,7 +13,7 @@ class Solution {
             s = s.replace("ma", " ");
             s = s.replace(" ", "");
             
-            if(s.length() == 0) answer++;
+            if(s.length()== 0) answer++;
         }
         
         return answer;
