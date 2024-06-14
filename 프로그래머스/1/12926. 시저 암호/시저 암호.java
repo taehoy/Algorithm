@@ -1,31 +1,33 @@
+import java.util.*;
+
 class Solution {
     public String solution(String s, int n) {
-        String answer = "";
+        StringBuilder sb = new StringBuilder();
         
-        // s의 길이만큼 순회한다.
-        for(int i=0; i<s.length(); i++){
-            char ch = s.charAt(i);
-            
-            // 공백이면 공백 추가
-            if(ch == ' ') {
-                answer += ch;
+        for(char c : s.toCharArray()){
+            if(c == ' '){
+                sb.append(c);
                 continue;
             }
             
-            if('a' <= ch && ch <= 'z'){
-                if(ch + n > 'z'){
-                    answer += (char)(ch + n - 26);
+            // 소문자
+            if('a'<=c && c<='z'){
+                // 'z' 초과
+                if(c + n >'z'){
+                    sb.append((char)(c + n - 26));
                 } else {
-                    answer += (char)(ch + n);
+                    sb.append((char)(c+n));
                 }
-            } else if('A' <= ch && ch <= 'Z'){
-                if(ch + n > 'Z'){
-                    answer += (char)(ch + n - 26);
+            } else { // 대문자
+                // 'Z' 초과
+                if(c + n >'Z'){
+                    sb.append((char)(c + n - 26));
                 } else {
-                    answer += (char)(ch + n);
+                    sb.append((char)(c+n));
                 }
             }
         }
-        return answer;
+        
+        return sb.toString();
     }
 }
