@@ -1,15 +1,22 @@
+import java.util.*;
+
 class Solution {
     public int[] solution(String s) {
         int[] answer = new int[s.length()];
         
-        answer[0] = -1;
+        Map<Character, Integer> map = new HashMap<>();
         
-        for(int i=1; i<s.length(); i++){
-            int idx = s.substring(0,i).lastIndexOf(s.charAt(i));
-            if( idx == -1){
+        for(int i=0; i<s.length(); i++){
+            char c = s.charAt(i);
+            
+            if(!map.containsKey(c)){
+                map.put(c,i);
                 answer[i] = -1;
             } else {
-                answer[i] = i - idx;
+                int idx = map.get(c);
+                int diff = i - idx;
+                answer[i] = diff;
+                map.put(c,i);
             }
         }
         
