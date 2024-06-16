@@ -21,7 +21,6 @@ class Solution {
             int currX = x;
             int currY = y;
             String[] strArr = routes[i].split(" ");
-            
             String vector = strArr[0];
             int distance = Integer.parseInt(strArr[1]);
             
