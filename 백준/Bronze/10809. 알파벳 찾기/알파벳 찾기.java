@@ -1,17 +1,34 @@
-import java.util.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-public class Main{
-    public static void main(String[] args) throws IOException{
+public class Main {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuffer sb = new StringBuffer();
-        String str = br.readLine();
-        
-        // a ~ z까지 순회
-        for(char c = 'a'; c <= 'z'; c++){
-            //indexOf이용하여 인덱스 위치 설정 
-            sb.append(str.indexOf(c) + " ");
+
+        StringBuilder sb = new StringBuilder();
+
+        String s = br.readLine();
+
+        int[] check = new int[26];
+
+        for(int i=0; i<26; i++){
+            check[i] = -1;
         }
+
+        for(int i=0; i<s.length(); i++){
+            char c = s.charAt(i);
+            int n = c - 'a';
+            if(check[n] == -1) {
+                check[n] = i;
+            }
+        }
+
+        for(int i=0; i<26; i++){
+            sb.append(check[i] + " ");
+        }
+
         System.out.println(sb);
+
     }
 }
