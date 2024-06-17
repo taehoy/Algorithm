@@ -6,25 +6,24 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuffer sb = new StringBuffer();
 
-        // 테스트케이스 수 받기
-        int testCnt = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
 
-        // 각 케이스 받기 , Stringtokenzier
-        for(int i=0; i<testCnt; i++){
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int num = Integer.parseInt(st.nextToken());
-            String str = st.nextToken();
+        for(int i=0; i<N; i++){
+            StringBuilder sb = new StringBuilder();
 
-            for(byte value : str.getBytes()){
-                for(int j=0; j<num; j++){
-                    sb.append((char) value);
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            int n = Integer.parseInt(st.nextToken());
+            String s = st.nextToken();
+
+            for(int j=0; j<s.length(); j++){
+                char c = s.charAt(j);
+
+                for(int k=0; k<n; k++){
+                    sb.append(c);
                 }
             }
-            sb.append("\n");
+            System.out.println(sb);
         }
-
-        System.out.println(sb);
     }
 }
