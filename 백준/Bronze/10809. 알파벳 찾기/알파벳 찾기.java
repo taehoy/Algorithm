@@ -10,22 +10,8 @@ public class Main {
 
         String s = br.readLine();
 
-        int[] check = new int[26];
-
-        for(int i=0; i<26; i++){
-            check[i] = -1;
-        }
-
-        for(int i=0; i<s.length(); i++){
-            char c = s.charAt(i);
-            int n = c - 'a';
-            if(check[n] == -1) {
-                check[n] = i;
-            }
-        }
-
-        for(int i=0; i<26; i++){
-            sb.append(check[i] + " ");
+        for(char c = 'a'; c <= 'z'; c++){
+            sb.append(s.indexOf(c)+" ");
         }
 
         System.out.println(sb);
