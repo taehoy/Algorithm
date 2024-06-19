@@ -1,26 +1,26 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.io.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int N = Integer.parseInt(br.readLine());
-        int[] arr = new int[N];
+        int[] arr = new int[10001];
 
         for(int i=0; i<N; i++){
-            arr[i] = Integer.parseInt(br.readLine());
+            arr[Integer.parseInt(br.readLine())]++;
+        }
+        br.close();
+
+        // 출력
+        for(int i=0; i<arr.length; i++){
+            if(arr[i] == 0) continue;
+
+            bw.write((i+"\n").repeat(arr[i]));
         }
 
-        Arrays.sort(arr);
-
-        StringBuilder sb = new StringBuilder();
-        for(int i=0; i<N; i++){
-            sb.append(arr[i]).append("\n");
-        }
-
-        System.out.println(sb);
+        bw.flush();
+        bw.close();
     }
 }
