@@ -23,6 +23,7 @@ public class Main {
             else sb.append("wrong").append("\n");
 
         }
+        
         System.out.println(sb);
         br.close();
     }
