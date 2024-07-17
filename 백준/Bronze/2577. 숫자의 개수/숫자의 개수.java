@@ -14,15 +14,14 @@ public class Main {
 
         int[] arr = new int[10];
 
-        String s = String.valueOf(result);
-
-        for(char c : s.toCharArray()){
-            arr[c-'0']++;
+        while(result != 0){
+            arr[result % 10]++;
+            result /= 10;
         }
 
         StringBuilder sb = new StringBuilder();
-        for(int n : arr){
-            sb.append(n).append("\n");
+        for(int i : arr){
+            sb.append(i).append("\n");
         }
 
         System.out.println(sb);
