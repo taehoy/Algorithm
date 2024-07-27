@@ -25,6 +25,7 @@ class Solution {
                 // 존재하지 않는 경우
                 tempScore += scoreMap.getOrDefault(nameInPhoto, 0);
             }
+            
             answer[idx++] = tempScore;
         }
         
