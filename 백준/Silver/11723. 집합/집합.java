@@ -13,30 +13,29 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         for(int i=0; i<N; i++){
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            String cmd = st.nextToken();
+            String cmd = br.readLine();
 
-            if(cmd.equals("add")){
-                int num = Integer.parseInt(st.nextToken());
+            if(cmd.startsWith("add")){
+                int num = Integer.parseInt(cmd.substring(4));
                 if(arr[num-1] == true) continue;
                 arr[num-1] = true;
-            } else if(cmd.equals("remove")){
-                int num = Integer.parseInt(st.nextToken());
+            } else if(cmd.startsWith("remove")){
+                int num = Integer.parseInt(cmd.substring(7));
                 if(arr[num-1] == false) continue;
                 arr[num-1] = false;
-            } else if(cmd.equals("check")){
-                int num = Integer.parseInt(st.nextToken());
+            } else if(cmd.startsWith("check")){
+                int num = Integer.parseInt(cmd.substring(6));
                 if(arr[num-1] == true) sb.append(1).append("\n");
                 else sb.append(0).append("\n");
-            } else if(cmd.equals("toggle")) {
-                int num = Integer.parseInt(st.nextToken());
+            } else if(cmd.startsWith("toggle")) {
+                int num = Integer.parseInt(cmd.substring(7));
                 if (arr[num - 1] == true) arr[num - 1] = false;
                 else arr[num - 1] = true;
-            } else if(cmd.equals("all")) {
+            } else if(cmd.startsWith("all")) {
                 for(int j=0; j<arr.length; j++){
                     arr[j] = true;
                 }
-            } else if(cmd.equals("empty")){
+            } else if(cmd.startsWith("empty")){
                 for(int j=0; j<arr.length; j++){
                     arr[j] = false;
                 }
