@@ -1,10 +1,7 @@
-a = (input().split(" "))
+numbers = list(map(int, input().split()))
 
-n1 = int(a[0])
-n2 = int(a[1])
-
-print(n1+n2)
-print(n1-n2)
-print(n1*n2)
-print(n1//n2)
-print(n1%n2)
+print(numbers[0]+numbers[1])
+print(numbers[0]-numbers[1])
+print(numbers[0]*numbers[1])
+print(numbers[0]//numbers[1])
+print(numbers[0]%numbers[1])
