@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
+
 class Top{
     int index;
     int height;
