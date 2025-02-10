@@ -1,13 +1,16 @@
 index = 0
-max = 0
+maxNumber = 0
 
-l = []
+numbers = []
 
 for i in range(9):
-    n = int(input())
-    if max <= n :
-        max = n
-        index = i
+    numbers.append(int(input()))
 
-print(max)
-print(index+1)
+maxNumber = max(numbers)
+
+for n in numbers :
+    index+=1
+    if maxNumber == n :
+        print(maxNumber)
+        print(index)
+        break
