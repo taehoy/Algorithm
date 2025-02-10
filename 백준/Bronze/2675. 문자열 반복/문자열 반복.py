@@ -3,9 +3,8 @@ result = ''
 for _ in range(T):
     R, S = input().split()
 
-    for word in S:
-        for _ in range(int(R)):
-            result += word
-    
-    print(result)
-    result = ''
+    R = int(R)
+
+    for char in S :
+        print(char * R, end="")
+    print()
