@@ -1,7 +1,8 @@
 numbers = list(map(int, input().split()))
-
-print(numbers[0]+numbers[1])
-print(numbers[0]-numbers[1])
-print(numbers[0]*numbers[1])
-print(numbers[0]//numbers[1])
-print(numbers[0]%numbers[1])
+num1 = numbers[0]
+num2 = numbers[1]
+print(num1+num2)
+print(num1-num2)
+print(num1*num2)
+print(num1//num2)
+print(num1%num2)
