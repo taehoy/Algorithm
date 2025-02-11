@@ -8,4 +8,4 @@ S = input()
 for word in S :
     result[ord(word) - ord('a')] += 1
 
-print(" ".join(map(str, result)))
+print(*result)
