@@ -1,11 +1,8 @@
-arr = input().split()
-n1 = int(arr[0])
-n2 = int(arr[1])
+a, b = map(int, input().split())
 
-if n1>n2 :
-    print('>')
-elif n1 < n2 :
-    print('<')
-else:
-    print('==')
-        
+if a > b :
+    print(">")
+elif a < b :
+    print("<")
+else :
+    print("==")
