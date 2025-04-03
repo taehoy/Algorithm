@@ -21,7 +21,7 @@ while(True) :
                 stack.append(s)
                 break
 
-    if len(stack) == 0 :
+    if not stack :
         print("yes")
     else :
         print("no")
