@@ -1,15 +1,14 @@
 import sys
 input = sys.stdin.readline
 
-arr = input().split("-")
+equtation = input().split("-")
 
-first_line = map(int,arr[0].split("+"))
+first_line = map(int,equtation[0].split("+"))
 
 answer = sum(first_line)
-minus_total = 0
 
-for i in range(1, len(arr)) :
-    arr2 = map(int,arr[i].split("+"))
-    minus_total += sum(arr2)
+for i in equtation[1:] :
+    arr2 = map(int,i.split("+"))
+    answer -= sum(arr2)
 
-print(answer - minus_total)
+print(answer)
