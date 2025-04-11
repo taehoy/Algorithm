@@ -1,11 +1,15 @@
 import sys
 input = sys.stdin.readline
 
-N = int(input())
+n = int(input())
 
-users = [input().rstrip().split() for _ in range(N)]
+arr = []
 
-sorted_users = sorted(users, key=lambda x: int(x[0]))
+for i in range(n) :
+    age, name = input().split()
+    arr.append((int(age), i, name))
 
-for user in sorted_users :
-    print(user[0], user[1])
+arr.sort(key=lambda x:x[0])
+
+for age, _, name in arr:
+    print(age, name)
