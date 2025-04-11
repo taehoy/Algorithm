@@ -1,17 +1,15 @@
-import sys
+n = int(input())
 
-input = sys.stdin.readline
+arr = []
 
-n = int(input().strip())
+for _ in range(n) :
+    word = input()
 
-lst = []
+    if word in arr :
+        continue
+    arr.append(word)
 
-for i in range(n):
-    lst.append(input().strip())
+arr.sort(key=lambda x:(len(x), x))
 
-lst = list(set(lst))
-lst.sort()
-result = sorted(lst, key=len)
-
-for str in result :
-    print(str)
+for word in arr :
+    print(word)
