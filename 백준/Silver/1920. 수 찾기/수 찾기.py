@@ -10,7 +10,7 @@ for num in arr :
     dic[num] = 1
 
 for num in arr2 :
-    if num in dic.keys():
+    if num in dic:
         print(1)
     else : 
         print(0)
