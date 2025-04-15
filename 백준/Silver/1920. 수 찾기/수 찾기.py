@@ -1,16 +1,8 @@
 n = int(input())
-
-arr = list(map(int, input().split()))
+arr = set(map(int, input().split()))
 
 m = int(input())
-arr2 = list(map(int, input().split()))
+arr2 = map(int, input().split())
 
-dic = {}
-for num in arr :
-    dic[num] = 1
-
-for num in arr2 :
-    if num in dic:
-        print(1)
-    else : 
-        print(0)
+for num in arr2:
+    print(1 if num in arr else 0)
