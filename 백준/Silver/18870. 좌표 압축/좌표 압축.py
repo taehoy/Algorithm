@@ -1,12 +1,9 @@
-import sys
-input = sys.stdin.readline
-
 n = int(input())
+
 arr = list(map(int, input().split()))
 
-arr_sorted = sorted(set(arr))
+sorted_arr = sorted(set(arr))   
 
-dic = {num : idx for idx, num in enumerate(arr_sorted)}
+dic = { num : idx for idx, num in enumerate(sorted_arr)}
 
-result = [str(dic[num]) for num in arr]
-print(' '.join(result))
+print(" ".join(str(dic[num]) for num in arr))
