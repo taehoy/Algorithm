@@ -1,21 +1,31 @@
 import sys
-from collections import deque
 input = sys.stdin.readline
+sys.setrecursionlimit(10**8)
 
-def bfs(y, x) :
-    q = deque([(y, x)])
-    graph[y][x] = 2
-    while q :
-        y, x = q.popleft()
+# def bfs(y, x) :
+    # q = deque([(y, x)])
+    # graph[y][x] = 2
+    # while q :
+    #     y, x = q.popleft()
         
-        for i in range(4) :
-            nx = x + dx[i]
-            ny = y + dy[i]
+    #     for i in range(4) :
+    #         nx = x + dx[i]
+    #         ny = y + dy[i]
 
-            if 0 <= nx < M and 0 <= ny < N :
-                if graph[ny][nx] == 1 :
-                    graph[ny][nx] = 2
-                    q.append((ny,nx))
+    #         if 0 <= nx < M and 0 <= ny < N :
+    #             if graph[ny][nx] == 1 :
+    #                 graph[ny][nx] = 2
+    #                 q.append((ny,nx))
+
+def dfs(y, x) :
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+
+        if 0 <= nx < M and 0 <= ny < N :
+            if graph[ny][nx] == 1 :
+                graph[ny][nx] = 2
+                dfs(ny, nx)
 
 # 입력 및 초기화
 T = int(input())
@@ -38,5 +48,5 @@ for _ in range(T):
         for j in range(M) :
             if graph[i][j] == 1 :
                 count += 1
-                bfs(i,j)
+                dfs(i,j)
     print(count)
