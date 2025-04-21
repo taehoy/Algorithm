@@ -1,42 +1,32 @@
 import sys
+from collections import deque
 input = sys.stdin.readline
-sys.setrecursionlimit(10**8) 
 
-
-N, M = map(int, input().split())
-count = 0
-
-graph = [[False] * (N+1) for _ in range(N+1)]
-visited = [False] * (N+1)
-
-for i in range(M):
-    a, b = map(int, input().split())
-
-    # # bfs에서 처음 시작 큐 설정 
-    # if i == 0 :
-    #     q.append(a)
-
-    graph[a][b] = True
-    graph[b][a] = True
-
-def bfs():
-    global q, visited
+def bfs(idx) :
+    q = deque([idx])
+    visited[idx] = True
 
     while q :
-        cur = q.pop()
-        visited[cur] = True
-
-        for next in range(1, N+1):
+        cur = q.popleft()
+        for next in range(1, n+1) :
             if not visited[next] and graph[cur][next] :
                 visited[next] = True
                 q.append(next)
 
-q = []
+n, m = map(int, input().split())
 
-for i in range(1, N+1):
+graph = [[False] * (n+1) for _ in range(n+1)]
+visited = [False] * (n+1)
+for _ in range(m) :
+    a, b = map(int, input().split())
+    graph[a][b] = True
+    graph[b][a] = True
+
+# bfs
+answer = 0
+for i in range(1, n+1) :
     if not visited[i] :
-        count += 1
-        q.append(i)
-        bfs()
+        answer += 1
+        bfs(i)
 
-print(count)
+print(answer)
