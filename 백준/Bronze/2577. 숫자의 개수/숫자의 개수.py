@@ -1,11 +1,12 @@
-import sys
-input =  sys.stdin.readline
+arr = [0] * 10
 
 a = int(input())
 b = int(input())
 c = int(input())
 
-result = list(str(a * b * c))
+total = a * b * c
 
-for i in range(10) :
-    print(result.count(str(i)))
+for i in str(total):
+    arr[int(i)] += 1
+
+print('\n'.join(map(str, arr)))
