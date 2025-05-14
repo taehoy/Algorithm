@@ -8,9 +8,7 @@ for _ in range(n):
     for s in st :
         if s == "O" :
             num += 1
+            result += num
         else :
             num = 0
-        
-        result += num
-    
     print(result)
