@@ -1,17 +1,16 @@
 n = int(input())
 
 for _ in range(n):
-    arr = list(map(int, input().split()))[1:]
+    n, *arr = map(int, input().split())
 
     total = sum(arr)
-    length = len(arr)
 
-    avg = total / length
+    avg = total / n
     count = 0
 
     for i in arr :
         if i > avg :
             count += 1
     
-    result = count / length * 100
+    result = count / n * 100
     print(f"{result:.3f}%")
