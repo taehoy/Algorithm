@@ -1,8 +1,7 @@
-a = []
-for i in range(9):
-    a.append(int(input()))
+# 25.05.14(수) 
+arr = [int(input()) for _ in range(9)]
 
-max = max(a)
-
-print(max)
-print(a.index(max)+1)
+max_num = max(arr)
+max_index = arr.index(max_num)
+print(max_num)
+print(max_index + 1)
