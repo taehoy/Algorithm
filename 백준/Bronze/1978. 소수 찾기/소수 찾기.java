@@ -5,33 +5,36 @@ import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        int count = 0;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         br.readLine();
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-        int count = 0;
-
-        while(st.hasMoreTokens()){
-            boolean isPrime = true;
-
+        while (st.hasMoreTokens()) {
             int num = Integer.parseInt(st.nextToken());
 
-            if(num == 1) continue;
-
-            for(int i=2; i<=Math.sqrt(num); i++){
-                if(num % i == 0){
-                    isPrime = false;
-                    break;
-                }
-            }
-
-            if(isPrime){
+            if (isPrime(num)) {
                 count++;
             }
+
         }
 
         System.out.println(count);
 
+    }
+
+    public static boolean isPrime(int num) {
+        if (num == 1) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
