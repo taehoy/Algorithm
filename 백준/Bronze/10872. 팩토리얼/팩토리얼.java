@@ -8,8 +8,15 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
+        int sum = 1;
 
-        System.out.println(factorial(num));
+        if (num >= 2) {
+            for (int i = 2; i <= num; i++) {
+                sum *= i;
+            }
+        }
+
+        System.out.println(sum);
     }
 
     private static int factorial(int num) {
