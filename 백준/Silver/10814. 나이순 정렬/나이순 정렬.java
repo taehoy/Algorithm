@@ -1,6 +1,5 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -10,22 +9,22 @@ public class Main {
 
         StringBuilder[] arr = new StringBuilder[201];
 
+        StringTokenizer st;
         for(int i=0; i<arr.length; i++){
             arr[i] = new StringBuilder();
         }
-        StringTokenizer st;
 
-        for(int i=0; i<N; i++){
+        for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine(), " ");
             int age = Integer.parseInt(st.nextToken());
             String name = st.nextToken();
 
-            arr[age].append(age).append(' ').append(name).append("\n");
+            arr[age].append(age).append(" ").append(name).append("\n");
         }
 
         StringBuilder sb = new StringBuilder();
 
-        for(StringBuilder p : arr){
+        for (StringBuilder p : arr) {
             sb.append(p);
         }
 
