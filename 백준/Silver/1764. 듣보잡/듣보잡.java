@@ -7,42 +7,34 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] arr = br.readLine().split(" ");
-        int N = Integer.parseInt(arr[0]); // 듣못 수
-        int M = Integer.parseInt(arr[1]); // 보못 수
+        int n = Integer.parseInt(arr[0]);// 듣못수
+        int m = Integer.parseInt(arr[1]);// 보못수
 
-        // 1. 듣못 명단 입력
-        Set<String> noListenNames = new HashSet<>();
+        Set<String> noSeeNames = new HashSet<>();
 
-        for(int i=0; i<N; i++){
-            String name = br.readLine();
-            noListenNames.add(name);
+        for (int i = 0; i < n; i++) {
+            noSeeNames.add(br.readLine());
         }
-        // 2. 듣못 명단에 보못 포함 여부확인
-        List<String> noListenSeeNames = new ArrayList<>();
 
-        for(int i=0; i<M; i++){
+        // 보못수에 추가하기
+        ArrayList<String> noSeeHearNames = new ArrayList<>();
+
+        for (int i = 0; i < m; i++) {
             String name = br.readLine();
-            if(noListenNames.contains(name)){
-                noListenSeeNames.add(name);
+            if(noSeeNames.contains(name)){
+                noSeeHearNames.add(name);
             }
         }
 
-        // 3. 듣보못 명단 출력
-        int size = noListenSeeNames.size();
+        Collections.sort(noSeeHearNames);
 
-        // 듣보못 0명인 경우
-        if(size == 0){
-            System.out.println(size);
-            return;
-        }
-
-        Collections.sort(noListenSeeNames);
+        int size = noSeeHearNames.size();
 
         StringBuilder sb = new StringBuilder();
 
         sb.append(size).append("\n");
 
-        for(String name : noListenSeeNames){
+        for (String name : noSeeHearNames) {
             sb.append(name).append("\n");
         }
 
