@@ -1,39 +1,37 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
+public class Main{
+    public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
 
-        int N = Integer.parseInt(br.readLine());
-
-        int[] arr = new int[N];
-
-        StringTokenizer st = new StringTokenizer(br.readLine());
-
-        for(int i=0; i<arr.length; i++){
-            arr[i] = Integer.parseInt(st.nextToken());
+        int[] arr = new int[n];
+        String[] strings = br.readLine().split(" ");
+        for(int i=0; i<n; i++){
+            arr[i] = Integer.parseInt(strings[i]);
         }
 
-        int target = Integer.parseInt(br.readLine());
-
-        int lt = 0;
-        int rt = N-1;
-        int cnt = 0;
-        int sum =0;
+        int x = Integer.parseInt(br.readLine());
 
         Arrays.sort(arr);
 
-        while(lt<rt){
-            sum = arr[lt]+arr[rt];
+        int left = 0;
+        int right = n-1;
+        int cnt = 0;
 
-            if(sum == target) cnt++;
+        while(left < right){
+            int sum = arr[left] + arr[right];
 
-            if(sum < target) lt++;
-            else rt--;
+            if(sum == x){
+                cnt++;
+                left++;
+                right--;
+            } else if(sum < x) {
+                left ++;
+            } else {
+                right--;
+            }
         }
 
         System.out.println(cnt);
