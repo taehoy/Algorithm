@@ -1,52 +1,38 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int N = Integer.parseInt(br.readLine());
+        int T = Integer.parseInt(br.readLine());
 
-        List<String> list = new ArrayList<>();
+        String[] arr = new String[T];
 
-        for(int i=0; i<N; i++){
-            String s = br.readLine();
-
-            if(list.contains(s)) continue;
-
-            list.add(s);
+        for (int i = 0; i < T; i++) {
+            arr[i] = br.readLine();
         }
 
-        Collections.sort(list, new Comparator<String>(){
-
+        Arrays.sort(arr, new Comparator<String>(){
             public int compare(String s1, String s2){
-                int length1 = s1.length();
-                int length2 = s2.length();
-
-                int result = length1 - length2;
-
-                if(result ==0){
+                if(s1.length() == s2.length()){
                     return s1.compareTo(s2);
+                } else {
+                    return s1.length() - s2.length();
                 }
-
-                return result;
             }
-
         });
 
         StringBuilder sb = new StringBuilder();
+        sb.append(arr[0]).append("\n");
 
-        for(String s : list){
-            sb.append(s).append("\n");
+        for (int i = 1; i < arr.length; i++) {
+            if(!arr[i-1].equals(arr[i])){
+                sb.append(arr[i]).append("\n");
+            }
         }
 
         System.out.println(sb);
 
-        br.close();
     }
 }
