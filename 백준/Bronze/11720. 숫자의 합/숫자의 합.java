@@ -1,24 +1,23 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        br.readLine();
-
-        int sum = 0;
+        int N = Integer.parseInt(br.readLine());
 
         String s = br.readLine();
 
-        for(int i=0; i<s.length(); i++){
-            String s1 = s.substring(i,i+1);
-            int n1 = Integer.parseInt(s1);
+        int result = 0;
 
-            sum += n1;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            int num = ch - '0';
+
+            result += num;
         }
 
-        System.out.println(sum);
+        System.out.println(result);
+
     }
 }
