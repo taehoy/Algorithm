@@ -1,30 +1,28 @@
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Queue<Integer> q = new LinkedList<>();
 
-        int N = Integer.parseInt(br.readLine());
+        int N = sc.nextInt();
 
-        Queue<Integer> queue = new LinkedList<>();
-
-        for(int i=1; i<=N; i++){
-            queue.offer(i);
+        for (int i = 1; i < N + 1; i++) {
+            q.add(i);
         }
 
-        // quque 안에 1개 만을 때까지 돌린다.
-        while(queue.size() >1){
-            // 처음 꺼 버린다.
-            queue.poll();
+        while (q.size() != 1) {
+            q.poll(); // 마지막 버리기
 
-            // 두번 째꺼 뒤로 돌린다.
-            queue.offer(queue.poll());
+            q.add(q.poll()); // 처음꺼 꺼내서 마지막에 넣기
+
         }
 
-        System.out.println(queue.poll());
+        System.out.println(q.poll());
     }
 }
