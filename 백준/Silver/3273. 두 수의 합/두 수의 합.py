@@ -1,17 +1,26 @@
-import sys
-input = sys.stdin.readline
-
-def solution(arr, x) :
-    numset = set(arr)
-    cnt = 0
-    for num in arr :
-        if x - num in numset :
-            cnt += 1
-    return cnt // 2
-
-
-n = int(input().strip())
+n = int(input())
 arr = list(map(int, input().split()))
-x = int(input().strip())
+x = int(input())
 
-print(solution(arr, x))
+arr.sort()
+
+left = 0
+right = n-1
+answer = 0 
+
+while left < right :
+    sum = arr[left] + arr[right]
+    
+    if sum > x :
+        right -= 1
+    elif sum < x :
+        left += 1
+    else :
+        answer+=1
+        right -= 1
+        left += 1
+
+print(answer)
+
+    
+    
