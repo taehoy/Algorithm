@@ -10,10 +10,6 @@ for c in room :
 
 arr[6] = (arr[6] + 1) // 2
 
-max = arr[0]
+result = max(arr)
 
-for i in range(1, 10) :
-    if max < arr[i] :
-        max = arr[i]
-
-print(max)
+print(result)
