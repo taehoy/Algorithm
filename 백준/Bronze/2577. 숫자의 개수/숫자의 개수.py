@@ -1,14 +1,9 @@
-result = [0] * 10
+a = 1
 
-arr = []
 for _ in range(3):
-    arr.append(int(input()))
-    
-total = arr[0] * arr[1] * arr[2]
+    a *= int(input())
 
-while total > 0 :
-    result[total % 10] += 1
-    total = total // 10
-    
-for i in result :
-    print(i)
+arr = list(str(a))
+
+for i in range(10):
+    print(arr.count(str(i)))
