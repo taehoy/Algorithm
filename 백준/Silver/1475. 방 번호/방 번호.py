@@ -1,19 +1,19 @@
-import sys
-input = sys.stdin.readline
+room = input()
 
-arr = list(str(input().rstrip()))
+arr = [0] * 10
 
-result = [0] * 10
-
-for i in range(len(arr)):
-    num = int(arr[i])
-
-    if num == 6 or num == 9 :
-        if result[6] <= result[9] :
-            result[6] += 1
-        else :
-            result[9] += 1
+for c in room :
+    if c == '6' or c == '9' :
+        arr[6] += 1
     else :
-        result[num] += 1
+        arr[int(c)] += 1
 
-print(max(result))
+arr[6] = (arr[6] + 1) // 2
+
+max = arr[0]
+
+for i in range(1, 10) :
+    if max < arr[i] :
+        max = arr[i]
+
+print(max)
