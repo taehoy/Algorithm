@@ -1,12 +1,11 @@
 n = int(input())
-
-stack = []
-for _ in range(n) :
+arr = []
+for _ in range(n):
     num = int(input())
-
+    
     if num == 0 :
-        stack.pop()
+        arr.pop()
     else :
-        stack.append(num)
+        arr.append(num)
 
-print(sum(stack))
+print(sum(arr))
