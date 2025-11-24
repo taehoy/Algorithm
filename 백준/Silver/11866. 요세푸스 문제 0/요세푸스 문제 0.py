@@ -16,4 +16,4 @@ while(len(arr) > 1) :
 
 answer.append(arr[0])
 
-print("<" + ", ".join(map(str, answer)) + ">")
+print(f"<{', '.join(map(str, answer))}>")
