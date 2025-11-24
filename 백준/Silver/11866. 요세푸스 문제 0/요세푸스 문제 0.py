@@ -1,19 +1,11 @@
+from collections import deque
+
 n, k = map(int ,input().split())
-
-arr = []
+dq = deque(range(1, n+1))
 answer = []
-for i in range(1,n+1):
-    arr.append(i)
 
-i = 1
-while(len(arr) > 1) :
-    if i == k :
-        answer.append(arr.pop(0))
-        i = 1
-    else :
-        arr.append(arr.pop(0))
-        i+=1
-
-answer.append(arr[0])
+while dq:
+    dq.rotate(-(k-1))
+    answer.append(dq.popleft())
 
 print(f"<{', '.join(map(str, answer))}>")
