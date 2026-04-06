@@ -1,14 +1,11 @@
 h, m = map(int,input().split())
 
-if m - 45 >= 0 :
-    print(h, m-45)
-else :
-    # 시간
-    h = h - 1
-    if (h < 0) :
-        h = 23
-    
-    # 분
-    m = m + 15
-    print(h,m)
+total = h * 60 + m
+
+total -= 45
+
+if total < 0 :
+    total += 24 * 60
+
+print(total // 60, total % 60)
 
