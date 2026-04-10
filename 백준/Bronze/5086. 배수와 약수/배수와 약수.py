@@ -1,3 +1,5 @@
+result = []
+
 while(True):
     a, b = map(int,input().split())
 
@@ -5,9 +7,11 @@ while(True):
         break
 
     if a % b == 0 :
-        print("multiple")
+        result.append("multiple")
     elif b % a == 0 :
-        print("factor")
+        result.append("factor")
     else :
-        print("neither")
+        result.append("neither")
     
+print('\n'.join(result))
+
